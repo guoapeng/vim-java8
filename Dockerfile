@@ -1,13 +1,13 @@
 FROM centos:7
 
-RUN mkdir ~/.vim/bundle/
-COPY .vimrc  /.vimrc
+RUN mkdir -p /root/.vim/bundle/
+COPY .vimrc  /root/.vimrc
 
 RUN yum install -y java-1.8.0-openjdk* \
     && yum install -y vim \
     && yum install -y git \
     && yum install -y curl \
-    && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
     && vim +PluginInstall +qall  
     
 ENV VIM_WORKSPACE=/var/workspace
